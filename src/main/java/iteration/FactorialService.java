@@ -3,11 +3,15 @@ package iteration;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 public class FactorialService {
+    public static final Predicate<Integer> EVENS =
+            n -> n % 2 == 0;
 
     public long recursive(long n) {
         if (n == 0) return 1;
@@ -26,7 +30,16 @@ public class FactorialService {
     public long functional(long n) {
         if (n == 0) return 1;
         return LongStream.rangeClosed(1, n)
-                .reduce(1, (total, eachValue) -> total * eachValue);
+                .reduce(1,
+                        (total, eachValue) -> {
+                            System.out.printf("total=%d, eachValue=%d%n", total, eachValue);
+                            return total * eachValue;
+                        });
+    }
+
+    public String joinStrings() {
+        return Stream.of("This", "is", "a", "stream", "of", "strings")
+                .reduce("", (total, s) -> total + " " + s);
     }
 
     public String joinNumbers(Integer... values) {
@@ -59,6 +72,9 @@ public class FactorialService {
 
     public int addDoubledValues(Integer... values) {
         return Arrays.stream(values)
-                .reduce(0, (acc, val) -> acc + 2 * val);
+                .reduce(0, (acc, val) -> {
+                    System.out.println("acc=" + acc + ", val=" + val);
+                    return acc + 2 * val;
+                });
     }
 }

@@ -3,6 +3,8 @@ package refactoring.after;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparingInt;
+
 public class LoopsSortsAndIfsAfter {
     public static void main(String[] args) {
         String[] strings = "this is an array of strings".split(" ");

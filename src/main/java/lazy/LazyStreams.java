@@ -1,8 +1,10 @@
 package lazy;
 
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 public class LazyStreams {
+    private static Logger logger = Logger.getLogger(LazyStreams.class.getName());
 
     public static int multByTwo(int n) {
         System.out.printf("Inside multByTwo with arg %d%n", n);
@@ -18,6 +20,11 @@ public class LazyStreams {
         // Find first even double between 200 and 400 divisble by 3
         int firstEvenDoubleDivBy3 = IntStream.range(100, 200)
                 .map(n -> n * 2)
+//                .map(n -> {
+//                    System.out.println("n = " + n);
+//                    return n;
+//                })
+                .peek(n -> logger.fine(() -> "n = " + n))
                 .filter(n -> n % 3 == 0)
                 .findFirst().orElse(0);
         System.out.println(firstEvenDoubleDivBy3);

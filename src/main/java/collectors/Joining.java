@@ -1,6 +1,7 @@
 package collectors;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
@@ -24,6 +25,7 @@ public class Joining {
     public String joinFileNamesDeclarative() {
         if (files != null)
             return Stream.of(files)
+                    .filter(Objects::nonNull)
                     .map(File::getName)
                     .collect(joining(", "));
         return "";

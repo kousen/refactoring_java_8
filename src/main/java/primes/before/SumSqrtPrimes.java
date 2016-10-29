@@ -5,14 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Created by Ken Kousen on 10/14/16.
- */
 public class SumSqrtPrimes {
     public static void main(String[] args) {
         List<Double> sqrtOfFirst100Primes = new ArrayList<>();
 
-        int index = 1;
+        int index = 2;
         while (sqrtOfFirst100Primes.size() < 100) {
             if (PrimeCalculator.isPrime(index)) {
                 sqrtOfFirst100Primes.add(Math.sqrt(index));

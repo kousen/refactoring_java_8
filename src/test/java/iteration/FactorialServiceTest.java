@@ -44,8 +44,12 @@ public class FactorialServiceTest {
                 service.joinNumbersWithFilter(n -> n % 2 == 0,
                         1, 2, 3, 4, 5));
         assertEquals("1,3,5",
-                service.joinNumbersWithFilter(n -> n % 2 != 0,
+                service.joinNumbersWithFilter(
+                        FactorialService.EVENS,
                         1, 2, 3, 4, 5));
+        System.out.println(
+                service.joinNumbersWithFilter(n -> n % 3 == 0,
+                1, 2, 3, 4, 5, 6, 7, 8, 9));
     }
 
     @Test
@@ -66,6 +70,16 @@ public class FactorialServiceTest {
         assertEquals(3L * 2L, service.iterative(3));
         assertEquals((long) (4 * 3 * 2), service.iterative(4));
         assertEquals((long) (6 * 5 * 4 * 3 * 2), service.iterative(6));
+    }
+
+    @Test
+    public void runFunctional() throws Exception {
+        service.functional(10);
+    }
+
+    @Test
+    public void joinStrings() throws Exception {
+        System.out.println(service.joinStrings());
     }
 
     @Test
