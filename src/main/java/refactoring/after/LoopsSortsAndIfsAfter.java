@@ -2,8 +2,10 @@ package refactoring.after;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.toList;
 
 public class LoopsSortsAndIfsAfter {
     public static void main(String[] args) {

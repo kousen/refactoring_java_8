@@ -22,7 +22,7 @@ public class FactorialServiceTest {
 
     @Test
     public void joinNumbers() {
-        String s = service.joinNumbers(1, 2, 3, 4, 5);
+        String s = service.joinNumbers(1, null, 2, 3, 4, null, 5);
         assertEquals("1,2,3,4,5", s);
     }
 

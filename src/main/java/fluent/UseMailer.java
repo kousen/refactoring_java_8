@@ -20,7 +20,7 @@ public class UseMailer {
         Mailer.send(mailer -> {
             mailer.from("builder@agiledeveloper.com")
                     .to("venkats@agiledeveloper.com")
-                    .subject("Your code sucks")
+                    .subject("Your code is better now")
                     .body("¯\\_(ツ)_/¯");
         });
     }

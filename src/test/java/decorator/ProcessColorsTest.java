@@ -21,7 +21,7 @@ public class ProcessColorsTest {
 
     @Test
     public void noProcessing() {
-        Color c = processColors.applyFilter(color -> color);
+        Color c = processColors.applyFilters();
         assertEquals(new Color(100, 50, 0), c);
     }
 
