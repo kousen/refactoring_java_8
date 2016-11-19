@@ -1,8 +1,5 @@
 package fluent;
 
-/**
- * Created by Ken Kousen on 10/14/16.
- */
 
 //public class UseMailer {
 //  public static void main(String[] args) {

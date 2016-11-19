@@ -2,11 +2,10 @@ package strategy;
 
 import org.junit.Test;
 
+import java.util.function.Predicate;
+
 import static org.junit.Assert.*;
 
-/**
- * Created by Ken Kousen on 10/14/16.
- */
 public class SumNumbersTest {
     private SumNumbers sum = new SumNumbers();
 
@@ -25,6 +24,10 @@ public class SumNumbersTest {
         assertEquals(1 + 3 + 5 + 7 + 9, sum.sumOddsUpToN(10));
     }
 
+    private boolean perfectSquare(int n) {
+        return Math.sqrt(n) % 1 == 0;
+    }
+
     @Test
     public void sumFilterUpToN() throws Exception {
         assertEquals(55,
@@ -33,6 +36,7 @@ public class SumNumbersTest {
                 sum.sumFilterUpToN(10, val -> val % 2 == 0));
         assertEquals(1 + 3 + 5 + 7 + 9,
                 sum.sumFilterUpToN(10, val -> val % 2 != 0));
+        assertEquals(1 + 4 + 9, sum.sumFilterUpToN(10, this::perfectSquare));
     }
 
 }

@@ -11,7 +11,7 @@ public class LazyStreams {
         return n * 2;
     }
 
-    public static boolean divByThree(int n) {
+    public static boolean modByThree(int n) {
         System.out.printf("Inside divByThree with arg %d%n", n);
         return n % 3 == 0;
     }
@@ -25,9 +25,9 @@ public class LazyStreams {
         System.out.println(firstEvenDoubleDivBy3);
 
         // Demonstrate laziness using print statements
-        firstEvenDoubleDivBy3 = IntStream.range(100, 200)
+        firstEvenDoubleDivBy3 = IntStream.range(100, 2_000_000)
                 .map(LazyStreams::multByTwo)
-                .filter(LazyStreams::divByThree)
+                .filter(LazyStreams::modByThree)
                 .findFirst().orElse(0);
         System.out.printf("First even divisible by 3 is %d%n", firstEvenDoubleDivBy3);
     }
