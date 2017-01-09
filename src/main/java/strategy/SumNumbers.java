@@ -3,9 +3,6 @@ package strategy;
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
-/**
- * Created by Ken Kousen on 10/14/16.
- */
 public class SumNumbers {
     public int sumUpToN(int n) {
         return IntStream.rangeClosed(1, n)
