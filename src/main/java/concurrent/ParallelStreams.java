@@ -10,7 +10,7 @@ public class ParallelStreams {
             try {
                 Thread.sleep(100);
                 System.out.println(n + " " + Thread.currentThread().getName());
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
         };
     }
