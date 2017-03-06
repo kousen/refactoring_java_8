@@ -7,12 +7,14 @@ public class LazyStreams {
     private static Logger logger = Logger.getLogger(LazyStreams.class.getName());
 
     public static int multByTwo(int n) {
-        System.out.printf("Inside multByTwo with arg %d%n", n);
+        System.out.printf(Thread.currentThread().getName() +
+                " inside multByTwo with arg %d%n", n);
         return n * 2;
     }
 
     public static boolean modByThree(int n) {
-        System.out.printf("Inside divByThree with arg %d%n", n);
+        System.out.printf(Thread.currentThread().getName() +
+                " inside divByThree with arg %d%n", n);
         return n % 3 == 0;
     }
 
@@ -24,8 +26,10 @@ public class LazyStreams {
                 .findFirst().orElse(0);
         System.out.println(firstEvenDoubleDivBy3);
 
+
         // Demonstrate laziness using print statements
         firstEvenDoubleDivBy3 = IntStream.range(100, 2_000_000)
+                .parallel()
                 .map(LazyStreams::multByTwo)
                 .filter(LazyStreams::modByThree)
                 .findFirst().orElse(0);

@@ -29,14 +29,14 @@ public class Resource {
         }
     }
 
-    public static <R> R useWithReturn(Function<Resource, R> function) {
-        R result = null;
-        Resource resource = new Resource();
-        try {
-            result = function.apply(resource);
-        } finally {
-            resource.close();
-        }
-        return result;
-    }
+//    public static <R> R useWithReturn(Function<Resource, R> function) {
+//        R result = null;
+//        Resource resource = new Resource();
+//        try {
+//            result = function.apply(resource);
+//        } finally {
+//            resource.close();
+//        }
+//        return result;
+//    }
 }
