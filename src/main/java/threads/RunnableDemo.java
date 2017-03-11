@@ -1,8 +1,5 @@
 package threads;
 
-/**
- * Created by Ken Kousen on 10/14/16.
- */
 public class RunnableDemo {
     public static void main(String[] args) {
         new Thread(new Runnable() {

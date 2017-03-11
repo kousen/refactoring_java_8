@@ -70,6 +70,14 @@ public class FactorialService {
                 .sum();
     }
 
+    public int addValuesUsingReduce(int... values) {
+        return Arrays.stream(values)
+                .reduce((acc, n) -> {
+                    System.out.println("acc=" + acc + ", n=" + n);
+                    return acc + n;
+                }).orElse(0);
+    }
+
     public int addDoubledValues(Integer... values) {
         return Arrays.stream(values)
                 .reduce(0,(acc, val) -> {

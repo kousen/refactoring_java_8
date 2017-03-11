@@ -2,11 +2,17 @@ package iteration;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class LoopingDemo {
+    private static Logger logger = Logger.getLogger(LoopingDemo.class.getName());
+
     public static void main(String[] args) {
-        List<String> strings = Arrays.asList("this", "is", "a", "list", "of", "strings");
+
+        List<String> strings = Arrays.asList(
+                "this", "is", "a", "list", "of", "strings");
+        logger.info(() -> "Here is my message: " + strings.toString());
 
         // Before:
         for (String s : strings) {
@@ -16,14 +22,14 @@ public class LoopingDemo {
         // After:
         strings.forEach(System.out::println);
 
+        System.out.println("Joining even length strings:");
         String total = strings.stream()
-//                .map(s -> {
-//                    System.out.println("Before filter: s = " + s);
-//                    return s;
-//                })
-                .peek(s -> System.out.println("Before filter: s = " + s))
                 .filter(s -> s.length() % 2 == 0)
-                .peek(s -> System.out.println("After filter: s = " + s))
+                .map(s -> {
+                    System.out.println(s);
+                    return s;
+                })
+                .peek(s -> System.out.println("The value of s is " + s))
                 .map(String::toUpperCase)
                 .collect(Collectors.joining(","));
         System.out.println(total);

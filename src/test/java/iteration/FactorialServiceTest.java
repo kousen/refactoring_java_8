@@ -4,15 +4,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Ken Kousen on 10/14/16.
- */
 public class FactorialServiceTest {
     private FactorialService service = new FactorialService();
 
     @Test
     public void testAddValues() {
         assertEquals(55, service.addValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+    }
+
+    @Test
+    public void addValuesWithReduce() throws Exception {
+        assertEquals(55, service.addValuesUsingReduce(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
     }
 
     @Test
@@ -44,8 +46,7 @@ public class FactorialServiceTest {
                 service.joinNumbersWithFilter(n -> n % 2 == 0,
                         1, 2, 3, 4, 5));
         assertEquals("1,3,5",
-                service.joinNumbersWithFilter(
-                        FactorialService.EVENS,
+                service.joinNumbersWithFilter(FactorialService.EVENS,
                         1, 2, 3, 4, 5));
         System.out.println(
                 service.joinNumbersWithFilter(n -> n % 3 == 0,
