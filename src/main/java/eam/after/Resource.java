@@ -4,6 +4,12 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class Resource {
+    public static final Consumer<Resource> op1op2 = resource -> {
+        resource.op1();
+        resource.op2();
+    };
+
+
     private Resource() {
         System.out.println("Instance created");
     }

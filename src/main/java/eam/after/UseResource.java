@@ -14,5 +14,7 @@ public class UseResource {
             resource.op1();
             resource.op2();
         });
+
+        Resource.use(Resource.op1op2);
     }
 }
