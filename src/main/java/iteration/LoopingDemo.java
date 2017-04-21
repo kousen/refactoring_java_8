@@ -3,6 +3,7 @@ package iteration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -14,23 +15,37 @@ public class LoopingDemo {
 
         List<String> strings = Arrays.asList(
                 "this", "is", "a", "list", "of", "strings");
-        // logger.info(() -> "Here is my message: " + strings.toString());
+        // logger.info(() -> "Here is my message: " + strings);
 
         // Before:
         for (String s : strings) {
             System.out.println(s);
         }
 
+        // Anonymous inner class impl
+        strings.forEach(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        });
+
         // After:
-        strings.forEach(x -> System.out.println(x));
+        strings.forEach(x -> System.out.println("The value of x is " + x));
         strings.forEach(System.out::println);
+
+        strings.stream()                    // Stream<String>
+                // .map(String::length)     // Stream<Integer>
+                .mapToInt(String::length)   // IntStream
+                .forEach(System.out::println);
 
         strings = Arrays.asList(
                 "this", "is", null, "a", "list", null, "of", "strings");
         System.out.println("Lengths: ");
-        strings.stream()
+        String str = strings.stream()
                 .filter(Objects::nonNull)
-                .forEach(s -> System.out.println(s.length()));
+                .collect(Collectors.joining(","));
+        System.out.println(str);
 
 
         Predicate<String> evens = s -> s.length() % 2 == 0;

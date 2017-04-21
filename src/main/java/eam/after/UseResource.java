@@ -10,9 +10,9 @@ public class UseResource {
 //            r.close();
 //        }
 
-        Resource.use(resource -> {
-            resource.op1();
-            resource.op2();
+        Resource.use(r -> {
+            r.op1();
+            r.op2();
         });
 
         Resource.use(Resource.op1op2);
