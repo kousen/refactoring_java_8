@@ -10,6 +10,25 @@ import java.util.stream.Collectors;
 
 public class LoopingDemo {
     private static Logger logger = Logger.getLogger(LoopingDemo.class.getName());
+    public static final Predicate<String> EVEN_LENGTHS = s -> s.length() % 2 == 0;
+    public static final Predicate<String> ODD_LENGTHS = EVEN_LENGTHS.negate();
+
+
+    public List<String> evenLengths(List<String> strings) {
+        return strings.stream()
+                .filter(s -> s.length() % 2 == 0)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> oddLengths(List<String> strings) {
+        return filteredStrings(strings, s -> s.length() % 2 != 0);
+    }
+
+    public List<String> filteredStrings(List<String> strings, Predicate<String> predicate) {
+        return strings.stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
+    }
 
     public static void main(String[] args) {
 
@@ -42,10 +61,11 @@ public class LoopingDemo {
         strings = Arrays.asList(
                 "this", "is", null, "a", "list", null, "of", "strings");
         System.out.println("Lengths: ");
-        String str = strings.stream()
+        List<Integer> lengths = strings.stream()
                 .filter(Objects::nonNull)
-                .collect(Collectors.joining(","));
-        System.out.println(str);
+                .map(String::length)
+                .collect(Collectors.toList());
+        System.out.println(lengths);
 
 
         Predicate<String> evens = s -> s.length() % 2 == 0;
@@ -53,12 +73,13 @@ public class LoopingDemo {
 
         System.out.println("Joining even length strings:");
         String total = strings.stream()
+                // .filter(s -> s != null && s.length() % 2 == 0)
                 .filter(nonNull.and(evens))
-                .map(s -> {
-                    System.out.println(s);
-                    return s;
-                })
-                .peek(s -> System.out.println("The value of s is " + s))
+//                .map(s -> {
+//                    System.out.println(s);
+//                    return s;
+//                })
+//                .peek(s -> System.out.println("The value of s is " + s))
                 .map(String::toUpperCase)
                 .collect(Collectors.joining(","));
         System.out.println(total);

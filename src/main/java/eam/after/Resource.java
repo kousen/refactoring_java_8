@@ -35,7 +35,7 @@ public class Resource {
         }
     }
 
-//    public static <R> R useWithReturn(Function<Resource, R> function) {
+//    public static <R> Optional<R> useWithReturn(Function<Resource, R> function) {
 //        R result = null;
 //        Resource resource = new Resource();
 //        try {
@@ -43,6 +43,6 @@ public class Resource {
 //        } finally {
 //            resource.close();
 //        }
-//        return result;
+//        return Optional.ofNullable(result);
 //    }
 }

@@ -1,10 +1,8 @@
 package collectors;
 
 import java.io.File;
-import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.joining;
 
 public class Joining {
     private File[] files = new File("src/main/java").listFiles();
@@ -23,11 +21,26 @@ public class Joining {
     }
 
     public String joinFileNamesDeclarative() {
-        if (files != null)
-            return Stream.of(files)
-                    .filter(Objects::nonNull)
-                    .map(File::getName)
-                    .collect(joining(", "));
-        return "";
+        return Stream.of(files)
+                .map(File::getName)
+                .collect(Collectors.joining(", "));
     }
+
+    public String joinFileNamesParallel() {
+        return Stream.of(files)
+                .parallel()
+                .map(File::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    public String joinFileNamesParallelStringBuffer() {
+        StringBuilder sb = new StringBuilder();
+        Stream.of(files)
+                .parallel()
+                .map(File::getName)
+                .forEachOrdered(s -> sb.append(s).append(", "));
+        return sb.toString();
+    }
+
+
 }

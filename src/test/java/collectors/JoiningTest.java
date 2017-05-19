@@ -14,4 +14,10 @@ public class JoiningTest {
         ));
     }
 
+    @Test
+    public void parallelVsSequential() throws Exception {
+        System.out.println(demo.joinFileNamesDeclarative());
+        System.out.println(demo.joinFileNamesParallel());
+        System.out.println(demo.joinFileNamesParallelStringBuffer());
+    }
 }

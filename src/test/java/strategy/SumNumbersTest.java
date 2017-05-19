@@ -33,9 +33,11 @@ public class SumNumbersTest {
         assertEquals(55,
                 sum.sumFilterUpToN(10, val -> true));
         assertEquals(2 + 4 + 6 + 8 + 10,
-                sum.sumFilterUpToN(10, val -> val % 2 == 0));
+                sum.sumFilterUpToN(10, SumNumbers.EVENS));
         assertEquals(1 + 3 + 5 + 7 + 9,
-                sum.sumFilterUpToN(10, val -> val % 2 != 0));
+                sum.sumFilterUpToN(10, SumNumbers.ODDS));
+        assertEquals(7 + 9,
+                sum.sumFilterUpToN(10, SumNumbers.ODDS.and(SumNumbers.GT5)));
         assertEquals(1 + 4 + 9, sum.sumFilterUpToN(10, this::perfectSquare));
     }
 

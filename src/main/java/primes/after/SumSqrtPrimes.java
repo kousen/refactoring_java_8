@@ -11,9 +11,12 @@ public class SumSqrtPrimes {
                 Stream.iterate(2, e -> e + 1)
                         .filter(PrimeCalculator::isPrime)
                         .limit(100)
-                        // .peek(System.out::println)
+                        .peek(System.out::println)
                         .map(Math::sqrt)
                         .collect(Collectors.toList());
+
+
         System.out.println(sqrtOfFirst100Primes);
+        System.out.println(sqrtOfFirst100Primes.size());
     }
 }
