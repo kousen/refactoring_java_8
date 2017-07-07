@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 public class FactorialService {
     public static final Predicate<Integer> EVENS = n -> n % 2 == 0;
     public static final Predicate<Integer> ODDS = n -> n % 2 != 0;
+    public static final Predicate<Integer> GT3 = n -> n > 3;
 
     public long recursive(long n) {
         if (n == 0) return 1;

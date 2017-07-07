@@ -8,6 +8,6 @@ public class PrimeCalculator {
 
         return number > 1 &&
                 IntStream.range(2, max)
-                        .noneMatch(index -> number % index == 0);
+                        .noneMatch(n -> number % n == 0);
     }
 }
